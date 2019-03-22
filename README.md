@@ -1,6 +1,15 @@
-# play-scala-starter-example
+# Semaphore demo CI pipeline using Scala and Play
 
-[<img src="https://img.shields.io/travis/playframework/play-scala-starter-example.svg"/>](https://travis-ci.org/playframework/play-scala-starter-example)
+Example application and continuous integration pipeline showing how to run
+Scala Play project on [Semaphore][semaphore].
+Based on [play-scala-starter-example][starter-repo].
+
+CI is based on Gradle and sbt, and configured in
+[`.semaphore/semaphore.yml`](./.semaphore/semaphore.yml).
+It runs two parallel jobs in a build matrix with different Java versions.
+
+Fork this repository and use it to [create your own project][create-project] on
+Semaphore.
 
 This is a starter application that shows how Play works.  Please see the documentation at <https://www.playframework.com/documentation/latest/Home> for more details.
 
@@ -55,3 +64,7 @@ There are several demonstration files available in this template.
 - `ExampleFilter.scala`:
 
   A simple filter that adds a header to every response.
+
+[semaphore]: https://semaphoreci.com
+[create-project]: https://docs.semaphoreci.com/article/63-your-first-project
+[starter-repo]: https://github.com/playframework/play-scala-starter-example
