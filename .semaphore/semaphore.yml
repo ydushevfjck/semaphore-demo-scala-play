@@ -61,6 +61,6 @@ blocks:
         commands:
         - cd $HOME
         - ls -lah
-        - cache store sbt-$SEMAPHORE_GIT_BRANCH-$(checksum build.sbt) .sbt
-        - cache store ivy2-$SEMAPHORE_GIT_BRANCH-$(checksum build.sbt) .ivy2/cache
-        - cache store gradle-$SEMAPHORE_GIT_BRANCH-$(checksum build.sbt) .gradle/caches
+        - cache store sbt-$SEMAPHORE_GIT_BRANCH-$(checksum $SEMAPHORE_PROJECT_NAME/build.sbt) .sbt
+        - cache store ivy2-$SEMAPHORE_GIT_BRANCH-$(checksum $SEMAPHORE_PROJECT_NAME/build.sbt) .ivy2/cache
+        - cache store gradle-$SEMAPHORE_GIT_BRANCH-$(checksum $SEMAPHORE_PROJECT_NAME/build.sbt) .gradle/caches
