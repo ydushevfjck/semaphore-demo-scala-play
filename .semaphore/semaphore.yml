@@ -37,9 +37,9 @@ blocks:
           # Restore dependencies from cache, command won't fail if key is
           # missing. More on caching:
           # - https://docs.semaphoreci.com/article/54-toolbox-reference#cache
-          - cache restore sbt-$SEMAPHORE_GIT_BRANCH-$(checksum build.sbt),sbt-$SEMAPHORE_GIT_BRANCH,sbt-master
-          - cache restore ivy2-$SEMAPHORE_GIT_BRANCH-$(checksum build.sbt),ivy2-$SEMAPHORE_GIT_BRANCH,ivy2-master
-          - cache restore gradle-$SEMAPHORE_GIT_BRANCH-$(checksum build.sbt),gradle-$SEMAPHORE_GIT_BRANCH,gradle-master
+          - cache restore sbt-$SEMAPHORE_GIT_BRANCH-$(checksum $SEMAPHORE_PROJECT_NAME/build.sbt),sbt-$SEMAPHORE_GIT_BRANCH,sbt-master
+          - cache restore ivy2-$SEMAPHORE_GIT_BRANCH-$(checksum $SEMAPHORE_PROJECT_NAME/build.sbt),ivy2-$SEMAPHORE_GIT_BRANCH,ivy2-master
+          - cache restore gradle-$SEMAPHORE_GIT_BRANCH-$(checksum $SEMAPHORE_PROJECT_NAME/build.sbt),gradle-$SEMAPHORE_GIT_BRANCH,gradle-master
       jobs:
         - name: Tests
           # Define variables for a build matrix
