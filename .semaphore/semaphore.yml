@@ -12,6 +12,13 @@ blocks:
         # Needed for use in scripts/test-sbt and scripts/test-gradle
         - name: SCALA_VERSION
           value: "2.12.6"
+      prologue:
+        commands:
+          - cd $HOME
+          - ls -lah
+          - cache restore sbt-$SEMAPHORE_GIT_BRANCH-$(checksum build.sbt),sbt-$SEMAPHORE_GIT_BRANCH,sbt-master
+          - cache restore ivy2-$SEMAPHORE_GIT_BRANCH-$(checksum build.sbt),ivy2-$SEMAPHORE_GIT_BRANCH,ivy2-master
+          - cache restore gradle-$SEMAPHORE_GIT_BRANCH-$(checksum build.sbt),gradle-$SEMAPHORE_GIT_BRANCH,gradle-master
       jobs:
         - name: Tests
           matrix:
@@ -24,17 +31,10 @@ blocks:
             - sem-version java $JAVA_VERSION
             - ./scripts/test-sbt
             - ./scripts/test-gradle
-      prologue:
-        commands:
-          - cd $HOME
-          - ls -lah
-          - cache restore sbt-$SEMAPHORE_GIT_BRANCH,sbt-master
-          - cache restore ivy2-$SEMAPHORE_GIT_BRANCH,ivy2-master
-          - cache restore gradle-$SEMAPHORE_GIT_BRANCH,gradle-master
       epilogue:
         commands:
         - cd $HOME
         - ls -lah
-        - cache store sbt-$SEMAPHORE_GIT_BRANCH .sbt
-        - cache store ivy2-$SEMAPHORE_GIT_BRANCH .ivy2/cache
-        - cache store gradle-$SEMAPHORE_GIT_BRANCH .gradle/caches
+        - cache store sbt-$SEMAPHORE_GIT_BRANCH-$(checksum build.sbt) .sbt
+        - cache store ivy2-$SEMAPHORE_GIT_BRANCH-$(checksum build.sbt) .ivy2/cache
+        - cache store gradle-$SEMAPHORE_GIT_BRANCH-$(checksum build.sbt) .gradle/caches
