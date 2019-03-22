@@ -42,9 +42,9 @@ blocks:
           # Restore dependencies from cache, command won't fail if key is
           # missing. More on caching:
           # - https://docs.semaphoreci.com/article/54-toolbox-reference#cache
-          - cache restore sbt-$SEMAPHORE_GIT_BRANCH-$(checksum $SEMAPHORE_PROJECT_NAME/build.sbt),sbt-$SEMAPHORE_GIT_BRANCH,sbt-master
-          - cache restore ivy2-$SEMAPHORE_GIT_BRANCH-$(checksum $SEMAPHORE_PROJECT_NAME/build.sbt),ivy2-$SEMAPHORE_GIT_BRANCH,ivy2-master
-          - cache restore gradle-$SEMAPHORE_GIT_BRANCH-$(checksum $SEMAPHORE_PROJECT_NAME/build.sbt),gradle-$SEMAPHORE_GIT_BRANCH,gradle-master
+          - cache restore sbt-java$JAVA_VERSION-$SEMAPHORE_GIT_BRANCH-$(checksum $SEMAPHORE_PROJECT_NAME/build.sbt),sbt-java$JAVA_VERSION-$SEMAPHORE_GIT_BRANCH,sbt-java$JAVA_VERSION-master
+          - cache restore ivy2-java$JAVA_VERSION-$SEMAPHORE_GIT_BRANCH-$(checksum $SEMAPHORE_PROJECT_NAME/build.sbt),ivy2-java$JAVA_VERSION-$SEMAPHORE_GIT_BRANCH,ivy2-java$JAVA_VERSION-master
+          - cache restore gradle-java$JAVA_VERSION-$SEMAPHORE_GIT_BRANCH-$(checksum $SEMAPHORE_PROJECT_NAME/build.sbt),gradle-java$JAVA_VERSION-$SEMAPHORE_GIT_BRANCH,gradle-java$JAVA_VERSION-master
       jobs:
         - name: Tests
           # Define variables for a build matrix
@@ -61,6 +61,6 @@ blocks:
         commands:
         - cd $HOME
         - ls -lah
-        - cache store sbt-$SEMAPHORE_GIT_BRANCH-$(checksum $SEMAPHORE_PROJECT_NAME/build.sbt) .sbt
-        - cache store ivy2-$SEMAPHORE_GIT_BRANCH-$(checksum $SEMAPHORE_PROJECT_NAME/build.sbt) .ivy2/cache
-        - cache store gradle-$SEMAPHORE_GIT_BRANCH-$(checksum $SEMAPHORE_PROJECT_NAME/build.sbt) .gradle/caches
+        - cache store sbt-java$JAVA_VERSION-$SEMAPHORE_GIT_BRANCH-$(checksum $SEMAPHORE_PROJECT_NAME/build.sbt) .sbt
+        - cache store ivy2-java$JAVA_VERSION-$SEMAPHORE_GIT_BRANCH-$(checksum $SEMAPHORE_PROJECT_NAME/build.sbt) .ivy2/cache
+        - cache store gradle-java$JAVA_VERSION-$SEMAPHORE_GIT_BRANCH-$(checksum $SEMAPHORE_PROJECT_NAME/build.sbt) .gradle/caches
