@@ -68,3 +68,9 @@ There are several demonstration files available in this template.
 [semaphore]: https://semaphoreci.com
 [create-project]: https://docs.semaphoreci.com/article/63-your-first-project
 [starter-repo]: https://github.com/playframework/play-scala-starter-example
+
+## License
+
+Copyright (c) 2020 Rendered Text
+
+Distributed under the MIT License. See the file LICENSE.
