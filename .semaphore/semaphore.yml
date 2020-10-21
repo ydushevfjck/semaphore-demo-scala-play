@@ -39,7 +39,6 @@ blocks:
           - checkout
           # sem-version expects binary version:
           - sem-version scala 2.12
-          - cache clear
           # Restore dependencies from cache, command won't fail if key is
           # missing. More on caching:
           # - https://docs.semaphoreci.com/article/54-toolbox-reference#cache
